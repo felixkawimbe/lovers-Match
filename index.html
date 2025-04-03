@@ -1,0 +1,98 @@
+<head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;  /* Stack elements vertically */
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(233, 22, 22);
+        height: 500px;
+        width: 700px;
+        margin: 50px auto;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      input {
+        height: 50px;
+        width: 250px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      button {
+        height: 50px;
+        width: 120px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: white;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: rgb(200, 20, 20);
+        color: white;
+      }
+
+      p {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+      }
+    </style>
+    <title>LOVERS MATCH</title>
+</head>
+
+<body>
+
+<div class="container">
+  <input type="text" id="name1" placeholder="Enter Male Name">
+  <input type="text" id="name2" placeholder="Enter Female Name">
+  
+  <button onclick="showNames()">Submit</button>
+
+  <p id="output"></p>
+  <p id="score"></p>
+</div>
+
+<script>
+function showNames() {
+    let name1 = document.getElementById("name1").value.trim();
+    let name2 = document.getElementById("name2").value.trim();
+
+    if (name1 === "" || name2 === "") {
+        document.getElementById("output").innerText = "Please enter both names!";
+        document.getElementById("score").innerText = "";
+        return;
+    }
+
+    document.getElementById("output").innerText = `Names: ${name1} & ${name2}`;
+    
+    let nm = Math.floor(Math.random() * 100) + 1;
+
+    let message = `Your love score is ${nm}% - `;
+
+    if (nm > 75) {
+        message += "💖 Go on the date!";
+    } else if (nm > 65) {
+        message += "😊 Give it a try!";
+    } else if (nm >= 50) {
+        message += "🙂 Give it a chance!";
+    } else {
+        message += "😢 Try next time.";
+    }
+  
+    document.getElementById("score").innerText = message;
+}
+</script>
+
+</body>
